@@ -46,7 +46,7 @@
 			PluginDocumentSettingPanel,
 			{
 				name: 'sev-simple-hreflang-panel',
-				title: __( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ),
+				title: __( 'hreflang (alternate language versions)', 'sev-simple-hreflang' ),
 				icon: 'translation',
 			},
 			alternates.map( function ( row, index ) {
@@ -90,7 +90,7 @@
 									removeRow( index );
 								},
 							},
-							__( 'Zeile entfernen', 'sev-simple-hreflang' )
+							__( 'Remove row', 'sev-simple-hreflang' )
 						)
 					)
 				);
@@ -98,7 +98,7 @@
 			el(
 				Button,
 				{ variant: 'secondary', onClick: addRow },
-				__( 'Sprachversion hinzufügen', 'sev-simple-hreflang' )
+				__( 'Add language version', 'sev-simple-hreflang' )
 			)
 		);
 	}

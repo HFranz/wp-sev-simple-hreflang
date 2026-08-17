@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SEV Simple hreflang 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sev-simple-hreflang\n"
+"Last-Translator: sevmatic\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-17T12:25:18+00:00\n"
+"PO-Revision-Date: 2026-08-17T12:25:18+00:00\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: sev-simple-hreflang\n"
+
+#. Plugin Name of the plugin
+#: sev-simple-hreflang.php
+msgid "SEV Simple hreflang"
+msgstr "SEV Simple hreflang"
+
+#. Description of the plugin
+#: sev-simple-hreflang.php
+msgid "Adds hreflang alternates for pages, posts, and categories and outputs them as <link rel=\"alternate\"> in <head>, including a self-referencing link."
+msgstr "Fügt hreflang-Alternates für Seiten, Beiträge und Kategorien hinzu und gibt sie als <link rel=\"alternate\"> im <head> aus, inklusive Self-Referencing-Link."
+
+#. Author of the plugin
+#: sev-simple-hreflang.php
+msgid "sevmatic"
+msgstr "sevmatic"
+
+#. Author URI of the plugin
+#: sev-simple-hreflang.php
+msgid "https://sevmatic.com"
+msgstr "https://sevmatic.com"
+
+#: includes/hreflang.php:122
+#: includes/hreflang.php:126
+msgid "Remove"
+msgstr "Entfernen"
+
+#: includes/hreflang.php:127
+#: public/js/hreflang-sidebar.js:101
+msgid "Add language version"
+msgstr "Sprachversion hinzufügen"
+
+#: includes/hreflang.php:130
+msgid "Output as <link rel=\"alternate\" hreflang=\"…\"> in the <head> of this category archive page."
+msgstr "Wird als <link rel=\"alternate\" hreflang=\"…\"> im <head> dieser Kategorie-Archivseite ausgegeben."
+
+#: includes/hreflang.php:141
+#: includes/hreflang.php:158
+#: public/js/hreflang-sidebar.js:49
+msgid "hreflang (alternate language versions)"
+msgstr "hreflang (alternative Sprachversionen)"

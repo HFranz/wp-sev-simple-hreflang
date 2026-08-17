@@ -1,11 +1,11 @@
 <?php
 /**
- * Erlaubt es, pro Seite/Beitrag/Kategorie alternative Sprachversionen zu
- * hinterlegen, die als <link rel="alternate" hreflang="…"> im <head>
- * ausgegeben werden (plus ein Self-Referencing-Link auf die aktuelle Seite).
+ * Lets editors attach alternate-language versions to a page/post/category,
+ * output as <link rel="alternate" hreflang="…"> in <head> (plus a
+ * self-referencing link to the current page).
  *
- * Bewusst kein Content-Block: hreflang-Angaben werden von Suchmaschinen nur
- * im <head> (bzw. HTTP-Header oder Sitemap) ausgewertet, nicht im Body.
+ * Deliberately no content block: hreflang annotations are only evaluated by
+ * search engines in <head> (or via HTTP header or sitemap), not in the body.
  *
  * @package sevmatic
  */
@@ -73,9 +73,9 @@ add_action(
 );
 
 /**
- * Klassisches Repeater-Formular für Kategorien: der Block-Editor existiert
- * auf edit-tags.php/term.php nicht, daher Term-Meta statt Post-Meta und ein
- * kleines Vanilla-JS-Script statt des React-Sidebar-Panels.
+ * Classic repeater form for categories: the block editor doesn't exist on
+ * edit-tags.php/term.php, so this uses term meta instead of post meta and a
+ * small vanilla-JS script instead of the React sidebar panel.
  */
 add_action(
 	'init',
@@ -95,7 +95,7 @@ add_action(
 	function () {
 		global $pagenow;
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur lesend, um über das Enqueuen eines Assets zu entscheiden.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, just decides whether to enqueue an asset.
 		$taxonomy = isset( $_GET['taxonomy'] ) ? sanitize_key( wp_unslash( $_GET['taxonomy'] ) ) : 'category';
 
 		if ( in_array( $pagenow, array( 'edit-tags.php', 'term.php' ), true ) && 'category' === $taxonomy ) {
@@ -105,12 +105,12 @@ add_action(
 );
 
 /**
- * Gibt das Repeater-Formular für ein Feld-Array mit hreflang/URL-Zeilen aus.
- * Wird sowohl im "Neue Kategorie hinzufügen"- als auch im Bearbeiten-Formular
- * verwendet; nur der Container-ID-Suffix unterscheidet sich.
+ * Renders the repeater form for an array of hreflang/URL rows. Used on both
+ * the "Add New Category" and the edit-category form; only the container ID
+ * suffix differs.
  *
- * @param array  $alternates Liste von ['hreflang' => string, 'href' => string].
- * @param string $id_suffix  Suffix für die Container-ID ("add" oder "edit").
+ * @param array  $alternates List of ['hreflang' => string, 'href' => string].
+ * @param string $id_suffix  Suffix for the container ID ("add" or "edit").
  */
 function sevmatic_hreflang_render_term_fields( array $alternates, string $id_suffix ): void {
 	?>
@@ -119,15 +119,15 @@ function sevmatic_hreflang_render_term_fields( array $alternates, string $id_suf
 			<div class="sevmatic-hreflang-row">
 				<input type="text" name="sevmatic_hreflang[<?php echo esc_attr( $index ); ?>][hreflang]" placeholder="en-US" value="<?php echo esc_attr( $alternate['hreflang'] ?? '' ); ?>" />
 				<input type="url" name="sevmatic_hreflang[<?php echo esc_attr( $index ); ?>][href]" placeholder="https://example.com/en/category/" value="<?php echo esc_attr( $alternate['href'] ?? '' ); ?>" />
-				<button type="button" class="button sevmatic-hreflang-remove-row"><?php esc_html_e( 'Entfernen', 'sev-simple-hreflang' ); ?></button>
+				<button type="button" class="button sevmatic-hreflang-remove-row"><?php esc_html_e( 'Remove', 'sev-simple-hreflang' ); ?></button>
 			</div>
 		<?php endforeach; ?>
 	</div>
-	<button type="button" class="button sevmatic-hreflang-add-row" data-target="sevmatic-hreflang-rows-<?php echo esc_attr( $id_suffix ); ?>" data-remove-label="<?php esc_attr_e( 'Entfernen', 'sev-simple-hreflang' ); ?>">
-		<?php esc_html_e( 'Sprachversion hinzufügen', 'sev-simple-hreflang' ); ?>
+	<button type="button" class="button sevmatic-hreflang-add-row" data-target="sevmatic-hreflang-rows-<?php echo esc_attr( $id_suffix ); ?>" data-remove-label="<?php esc_attr_e( 'Remove', 'sev-simple-hreflang' ); ?>">
+		<?php esc_html_e( 'Add language version', 'sev-simple-hreflang' ); ?>
 	</button>
 	<p class="description">
-		<?php esc_html_e( 'Wird als <link rel="alternate" hreflang="…"> im <head> dieser Kategorie-Archivseite ausgegeben.', 'sev-simple-hreflang' ); ?>
+		<?php esc_html_e( 'Output as <link rel="alternate" hreflang="…"> in the <head> of this category archive page.', 'sev-simple-hreflang' ); ?>
 	</p>
 	<?php
 	wp_nonce_field( 'sevmatic_hreflang_term', 'sevmatic_hreflang_nonce' );
@@ -138,7 +138,7 @@ add_action(
 	function () {
 		?>
 		<div class="form-field">
-			<label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ); ?></label>
+			<label><?php esc_html_e( 'hreflang (alternate language versions)', 'sev-simple-hreflang' ); ?></label>
 			<?php sevmatic_hreflang_render_term_fields( array(), 'add' ); ?>
 		</div>
 		<?php
@@ -155,7 +155,7 @@ add_action(
 		}
 		?>
 		<tr class="form-field">
-			<th scope="row"><label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ); ?></label></th>
+			<th scope="row"><label><?php esc_html_e( 'hreflang (alternate language versions)', 'sev-simple-hreflang' ); ?></label></th>
 			<td><?php sevmatic_hreflang_render_term_fields( $alternates, 'edit' ); ?></td>
 		</tr>
 		<?php
@@ -163,11 +163,11 @@ add_action(
 );
 
 /**
- * Speichert die hreflang-Zeilen für eine Kategorie. Läuft sowohl beim
- * Anlegen als auch beim Bearbeiten (create_category/edited_category feuern
- * unabhängig davon, ob die Anfrage klassisch oder per AJAX kommt).
+ * Saves the hreflang rows for a category. Runs both on create and on edit
+ * (create_category/edited_category fire regardless of whether the request
+ * came in classically or via AJAX).
  *
- * @param int $term_id Die Term-ID der gespeicherten Kategorie.
+ * @param int $term_id The term ID of the saved category.
  */
 function sevmatic_hreflang_save_term_meta( int $term_id ): void {
 	if ( ! isset( $_POST['sevmatic_hreflang_nonce'] )
@@ -180,7 +180,7 @@ function sevmatic_hreflang_save_term_meta( int $term_id ): void {
 	}
 
 	$raw_rows = isset( $_POST['sevmatic_hreflang'] ) && is_array( $_POST['sevmatic_hreflang'] )
-		? wp_unslash( $_POST['sevmatic_hreflang'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- jede Zeile wird unten einzeln sanitized.
+		? wp_unslash( $_POST['sevmatic_hreflang'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- each row is sanitized individually below.
 		: array();
 
 	$alternates = array();
@@ -209,10 +209,9 @@ add_action( 'create_category', 'sevmatic_hreflang_save_term_meta' );
 add_action( 'edited_category', 'sevmatic_hreflang_save_term_meta' );
 
 /**
- * Ermittelt URL und hinterlegte hreflang-Alternates für die aktuell
- * aufgerufene Ansicht, sofern eine der unterstützten Kontexte vorliegt
- * (Seite/Beitrag, statische Beiträgeseite, Kategorie-Archiv). Gibt null
- * zurück, wenn keiner dieser Kontexte zutrifft.
+ * Resolves the URL and stored hreflang alternates for the currently
+ * requested view, if it's one of the supported contexts (post/page, static
+ * posts page, category archive). Returns null if none of those apply.
  */
 function sevmatic_hreflang_get_current_context(): ?array {
 	if ( is_singular( array( 'post', 'page' ) ) ) {
@@ -220,9 +219,9 @@ function sevmatic_hreflang_get_current_context(): ?array {
 		$url        = get_permalink( $post_id );
 		$alternates = get_post_meta( $post_id, SEVMATIC_HREFLANG_META_KEY, true );
 	} elseif ( is_home() && ! is_front_page() ) {
-		// Statische Beiträgeseite (Einstellungen > Lesen > "Beiträgeseite"):
-		// wird als Archiv gerendert, is_singular() ist hier false, obwohl
-		// die Seite eine eigene ID mit eigenem Post-Meta hat.
+		// Static posts page (Settings > Reading > "Posts page"): rendered as
+		// an archive, so is_singular() is false here even though the page
+		// has its own ID with its own post meta.
 		$post_id = (int) get_option( 'page_for_posts' );
 
 		if ( ! $post_id ) {
@@ -263,8 +262,8 @@ add_action(
 			return;
 		}
 
-		// Self-Referencing-hreflang: laut Google-Richtlinie sollte eine Seite
-		// mit hreflang-Angaben auch sich selbst als Alternate auflisten.
+		// Self-referencing hreflang: Google's guidelines recommend that a
+		// page with hreflang annotations also list itself as an alternate.
 		$self_hreflang = get_bloginfo( 'language' );
 
 		printf(
@@ -278,8 +277,7 @@ add_action(
 				continue;
 			}
 
-			// Duplikat vermeiden, falls die Seite versehentlich auch sich
-			// selbst als Alternate einträgt.
+			// Avoid a duplicate if the page was also entered as its own alternate by mistake.
 			if ( 0 === strcasecmp( $alternate['hreflang'], $self_hreflang ) ) {
 				continue;
 			}
@@ -291,5 +289,5 @@ add_action(
 			);
 		}
 	},
-	3 // Direkt nach den Feed-Links (feed_links() läuft auf Priorität 2), statt hinter rsd_link, wlwmanifest_link & Co. (Priorität 10).
+	3 // Right after the feed links (feed_links() runs at priority 2), instead of behind rsd_link, wlwmanifest_link, etc. (priority 10).
 );
