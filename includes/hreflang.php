@@ -10,6 +10,8 @@
  * @package sevmatic
  */
 
+defined( 'ABSPATH' ) || exit;
+
 define( 'SEVMATIC_HREFLANG_META_KEY', 'hreflang_alternates' );
 
 add_action(

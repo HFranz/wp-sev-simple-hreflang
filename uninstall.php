@@ -24,7 +24,15 @@ function sev_simple_hreflang_uninstall_current_site(): void {
 	// phpcs:enable
 }
 
-if ( is_multisite() ) {
+/**
+ * Räumt auf der aktuellen Site auf, bzw. auf allen Sites im Multisite-Netzwerk.
+ */
+function sev_simple_hreflang_uninstall(): void {
+	if ( ! is_multisite() ) {
+		sev_simple_hreflang_uninstall_current_site();
+		return;
+	}
+
 	$site_ids = get_sites( array( 'fields' => 'ids' ) );
 
 	foreach ( $site_ids as $site_id ) {
@@ -32,6 +40,5 @@ if ( is_multisite() ) {
 		sev_simple_hreflang_uninstall_current_site();
 		restore_current_blog();
 	}
-} else {
-	sev_simple_hreflang_uninstall_current_site();
 }
+sev_simple_hreflang_uninstall();
