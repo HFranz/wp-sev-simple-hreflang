@@ -8,51 +8,57 @@ Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Hinterlegt hreflang-Alternates für Seiten, Beiträge und Kategorien und gibt sie korrekt im <head> aus – inklusive Self-Referencing-Link.
+Adds hreflang alternates for pages, posts, and categories and outputs them correctly in <head> — including a self-referencing link.
 
 == Description ==
 
-SEV hreflang fügt Seiten, Beiträgen und Kategorien ein Feld hinzu, in dem sich beliebig viele alternative Sprachversionen (hreflang + URL) hinterlegen lassen. Das Plugin gibt daraus automatisch `<link rel="alternate" hreflang="…">`-Tags im `<head>` der jeweiligen Ansicht aus – inklusive eines Self-Referencing-Links auf die Seite selbst, wie von Google empfohlen.
+SEV hreflang adds a field to pages, posts, and categories where you can enter any number of alternate-language versions (hreflang + URL). The plugin automatically outputs these as `<link rel="alternate" hreflang="…">` tags in the `<head>` of the corresponding view — including a self-referencing link to the page itself, as recommended by Google.
 
-**Warum kein Block?**
+**Why no block?**
 
-hreflang-Angaben werden von Suchmaschinen nur im `<head>` (bzw. per HTTP-Header oder Sitemap) ausgewertet, nicht im sichtbaren Seiteninhalt. Ein Block, den man in den Content einfügt, würde im `<body>` landen und schlicht ignoriert. Deshalb setzt dieses Plugin bewusst auf Post-/Term-Meta statt auf einen Block.
+hreflang annotations are only evaluated by search engines in the `<head>` (or via HTTP header or sitemap), not in the visible page content. A block inserted into the content would end up in the `<body>` and simply be ignored. That's why this plugin deliberately uses post/term meta instead of a block.
 
-**Funktionsumfang**
+**Features**
 
-* Sidebar-Panel im Block-Editor für Seiten und Beiträge.
-* Eigenes Formularfeld beim Anlegen/Bearbeiten von Kategorien (dort gibt es keinen Block-Editor).
-* Unterstützt auch die statische "Beiträgeseite" (Einstellungen > Lesen).
-* Automatischer Self-Referencing-hreflang-Link, basierend auf der Sprache der Website.
-* Keine Einstellungen, keine externen Aufrufe – Aktivieren reicht.
+* Sidebar panel in the block editor for pages and posts.
+* Dedicated form field when adding/editing categories (there's no block editor there).
+* Also supports the static "Posts page" (Settings > Reading).
+* Automatic self-referencing hreflang link, based on the site's language.
+* No settings, no external calls — just activate it.
 
-Für Multisite: Da jede Site ihre eigene Datenbanktabelle für Optionen/Meta hat, lässt sich das Plugin ganz normal pro Site (de-)aktivieren.
+**Multisite**
+
+The plugin is fully multisite-compatible. It can be network-activated (active on every site) or activated per site individually, whichever fits your setup — each site keeps its own hreflang data, since post/term meta is already scoped per site.
 
 == Installation ==
 
-1. Lade den Ordner `sev-hreflang` in das Verzeichnis `/wp-content/plugins/` hoch.
-2. Aktiviere das Plugin über das Menü "Plugins" in WordPress.
-3. Beim Bearbeiten einer Seite/eines Beitrags: Sidebar öffnen, Panel "hreflang (alternative Sprachversionen)" ausklappen. Bei Kategorien: Feld direkt im Formular.
+1. Upload the `sev-hreflang` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+3. When editing a page/post: open the sidebar, expand the "hreflang (alternate language versions)" panel. For categories: the field is directly in the form.
 
 == Frequently Asked Questions ==
 
-= Warum sehe ich keinen Block im Editor? =
+= Why don't I see a block in the editor? =
 
-Es gibt bewusst keinen Block. hreflang-Tags müssen im `<head>` stehen, nicht im Content – ein Content-Block würde von Suchmaschinen ignoriert.
+There deliberately isn't one. hreflang tags must live in `<head>`, not in the content — a content block would be ignored by search engines.
 
-= Funktioniert das Plugin mit WPML/Polylang? =
+= Does this work with WPML/Polylang? =
 
-Das Plugin ist unabhängig von Mehrsprachigkeits-Plugins nutzbar und verwaltet die hreflang-Werte manuell pro Seite/Beitrag/Kategorie. Falls WPML oder Polylang aktiv ist und bereits hreflang ausgibt, kann es zu doppelten Tags kommen – in dem Fall bitte nur eine der beiden Lösungen verwenden.
+The plugin works independently of multilingual plugins and manages hreflang values manually per page/post/category. If WPML or Polylang is active and already outputs hreflang, you may end up with duplicate tags — in that case, please use only one of the two solutions.
 
-= Wird ein x-default-Wert unterstützt? =
+= Is x-default supported? =
 
-Ja – das hreflang-Feld ist ein freies Textfeld, `x-default` kann dort direkt eingetragen werden.
+Yes — the hreflang field is a free-text field, so `x-default` can be entered directly.
+
+= Does this work on Multisite? =
+
+Yes. The plugin can be network-activated or activated per site; each site manages its own hreflang data independently.
 
 == Screenshots ==
 
-1. Sidebar-Panel im Block-Editor
+1. Sidebar panel in the block editor
 
 == Changelog ==
 
 = 1.0.0 =
-* Erste Veröffentlichung.
+* Initial release.
