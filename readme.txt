@@ -1,4 +1,4 @@
-=== SEV hreflang ===
+=== SEV Simple hreflang ===
 Contributors: hfranz
 Tags: hreflang, seo, multilingual, alternate, international seo
 Requires at least: 6.0
@@ -12,7 +12,7 @@ Adds hreflang alternates for pages, posts, and categories and outputs them corre
 
 == Description ==
 
-SEV hreflang adds a field to pages, posts, and categories where you can enter any number of alternate-language versions (hreflang + URL). The plugin automatically outputs these as `<link rel="alternate" hreflang="…">` tags in the `<head>` of the corresponding view — including a self-referencing link to the page itself, as recommended by Google.
+SEV Simple hreflang adds a field to pages, posts, and categories where you can enter any number of alternate-language versions (hreflang + URL). The plugin automatically outputs these as `<link rel="alternate" hreflang="…">` tags in the `<head>` of the corresponding view — including a self-referencing link to the page itself, as recommended by Google.
 
 **Why no block?**
 
@@ -32,7 +32,7 @@ The plugin is fully multisite-compatible. It can be network-activated (active on
 
 == Installation ==
 
-1. Upload the `sev-hreflang` folder to the `/wp-content/plugins/` directory.
+1. Upload the `sev-simple-hreflang` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. When editing a page/post: open the sidebar, expand the "hreflang (alternate language versions)" panel. For categories: the field is directly in the form.
 

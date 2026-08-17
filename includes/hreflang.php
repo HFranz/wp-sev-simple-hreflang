@@ -48,14 +48,14 @@ add_action(
 	'init',
 	function () {
 		wp_register_script(
-			'sev-hreflang-sidebar',
-			SEV_HREFLANG_URL . 'public/js/hreflang-sidebar.js',
+			'sev-simple-hreflang-sidebar',
+			SEV_SIMPLE_HREFLANG_URL . 'public/js/hreflang-sidebar.js',
 			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-i18n' ),
-			SEV_HREFLANG_VERSION,
+			SEV_SIMPLE_HREFLANG_VERSION,
 			true
 		);
 
-		wp_set_script_translations( 'sev-hreflang-sidebar', 'sev-hreflang', SEV_HREFLANG_PATH . 'languages' );
+		wp_set_script_translations( 'sev-simple-hreflang-sidebar', 'sev-simple-hreflang', SEV_SIMPLE_HREFLANG_PATH . 'languages' );
 	}
 );
 
@@ -65,7 +65,7 @@ add_action(
 		$screen = get_current_screen();
 
 		if ( $screen && in_array( $screen->post_type, array( 'post', 'page' ), true ) ) {
-			wp_enqueue_script( 'sev-hreflang-sidebar' );
+			wp_enqueue_script( 'sev-simple-hreflang-sidebar' );
 		}
 	}
 );
@@ -79,10 +79,10 @@ add_action(
 	'init',
 	function () {
 		wp_register_script(
-			'sev-hreflang-term-repeater',
-			SEV_HREFLANG_URL . 'public/js/hreflang-term-repeater.js',
+			'sev-simple-hreflang-term-repeater',
+			SEV_SIMPLE_HREFLANG_URL . 'public/js/hreflang-term-repeater.js',
 			array(),
-			SEV_HREFLANG_VERSION,
+			SEV_SIMPLE_HREFLANG_VERSION,
 			true
 		);
 	}
@@ -97,7 +97,7 @@ add_action(
 		$taxonomy = isset( $_GET['taxonomy'] ) ? sanitize_key( wp_unslash( $_GET['taxonomy'] ) ) : 'category';
 
 		if ( in_array( $pagenow, array( 'edit-tags.php', 'term.php' ), true ) && 'category' === $taxonomy ) {
-			wp_enqueue_script( 'sev-hreflang-term-repeater' );
+			wp_enqueue_script( 'sev-simple-hreflang-term-repeater' );
 		}
 	}
 );
@@ -117,15 +117,15 @@ function sevmatic_hreflang_render_term_fields( array $alternates, string $id_suf
 			<div class="sevmatic-hreflang-row">
 				<input type="text" name="sevmatic_hreflang[<?php echo esc_attr( $index ); ?>][hreflang]" placeholder="en-US" value="<?php echo esc_attr( $alternate['hreflang'] ?? '' ); ?>" />
 				<input type="url" name="sevmatic_hreflang[<?php echo esc_attr( $index ); ?>][href]" placeholder="https://example.com/en/category/" value="<?php echo esc_attr( $alternate['href'] ?? '' ); ?>" />
-				<button type="button" class="button sevmatic-hreflang-remove-row"><?php esc_html_e( 'Entfernen', 'sev-hreflang' ); ?></button>
+				<button type="button" class="button sevmatic-hreflang-remove-row"><?php esc_html_e( 'Entfernen', 'sev-simple-hreflang' ); ?></button>
 			</div>
 		<?php endforeach; ?>
 	</div>
-	<button type="button" class="button sevmatic-hreflang-add-row" data-target="sevmatic-hreflang-rows-<?php echo esc_attr( $id_suffix ); ?>" data-remove-label="<?php esc_attr_e( 'Entfernen', 'sev-hreflang' ); ?>">
-		<?php esc_html_e( 'Sprachversion hinzufügen', 'sev-hreflang' ); ?>
+	<button type="button" class="button sevmatic-hreflang-add-row" data-target="sevmatic-hreflang-rows-<?php echo esc_attr( $id_suffix ); ?>" data-remove-label="<?php esc_attr_e( 'Entfernen', 'sev-simple-hreflang' ); ?>">
+		<?php esc_html_e( 'Sprachversion hinzufügen', 'sev-simple-hreflang' ); ?>
 	</button>
 	<p class="description">
-		<?php esc_html_e( 'Wird als <link rel="alternate" hreflang="…"> im <head> dieser Kategorie-Archivseite ausgegeben.', 'sev-hreflang' ); ?>
+		<?php esc_html_e( 'Wird als <link rel="alternate" hreflang="…"> im <head> dieser Kategorie-Archivseite ausgegeben.', 'sev-simple-hreflang' ); ?>
 	</p>
 	<?php
 	wp_nonce_field( 'sevmatic_hreflang_term', 'sevmatic_hreflang_nonce' );
@@ -136,7 +136,7 @@ add_action(
 	function () {
 		?>
 		<div class="form-field">
-			<label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-hreflang' ); ?></label>
+			<label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ); ?></label>
 			<?php sevmatic_hreflang_render_term_fields( array(), 'add' ); ?>
 		</div>
 		<?php
@@ -153,7 +153,7 @@ add_action(
 		}
 		?>
 		<tr class="form-field">
-			<th scope="row"><label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-hreflang' ); ?></label></th>
+			<th scope="row"><label><?php esc_html_e( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ); ?></label></th>
 			<td><?php sevmatic_hreflang_render_term_fields( $alternates, 'edit' ); ?></td>
 		</tr>
 		<?php

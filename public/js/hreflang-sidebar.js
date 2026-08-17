@@ -45,8 +45,8 @@
 		return el(
 			PluginDocumentSettingPanel,
 			{
-				name: 'sev-hreflang-panel',
-				title: __( 'hreflang (alternative Sprachversionen)', 'sev-hreflang' ),
+				name: 'sev-simple-hreflang-panel',
+				title: __( 'hreflang (alternative Sprachversionen)', 'sev-simple-hreflang' ),
 				icon: 'translation',
 			},
 			alternates.map( function ( row, index ) {
@@ -57,7 +57,7 @@
 						PanelRow,
 						null,
 						el( TextControl, {
-							label: __( 'hreflang', 'sev-hreflang' ),
+							label: __( 'hreflang', 'sev-simple-hreflang' ),
 							placeholder: 'en-US',
 							value: row.hreflang || '',
 							onChange: function ( value ) {
@@ -69,7 +69,7 @@
 						PanelRow,
 						null,
 						el( TextControl, {
-							label: __( 'URL', 'sev-hreflang' ),
+							label: __( 'URL', 'sev-simple-hreflang' ),
 							type: 'url',
 							placeholder: 'https://example.com/en/page/',
 							value: row.href || '',
@@ -90,7 +90,7 @@
 									removeRow( index );
 								},
 							},
-							__( 'Zeile entfernen', 'sev-hreflang' )
+							__( 'Zeile entfernen', 'sev-simple-hreflang' )
 						)
 					)
 				);
@@ -98,12 +98,12 @@
 			el(
 				Button,
 				{ variant: 'secondary', onClick: addRow },
-				__( 'Sprachversion hinzufügen', 'sev-hreflang' )
+				__( 'Sprachversion hinzufügen', 'sev-simple-hreflang' )
 			)
 		);
 	}
 
-	plugins.registerPlugin( 'sev-hreflang-sidebar', {
+	plugins.registerPlugin( 'sev-simple-hreflang-sidebar', {
 		render: HreflangPanel,
 	} );
 } )( window.wp.plugins, window.wp.editPost, window.wp.element, window.wp.components, window.wp.data, window.wp.i18n );
