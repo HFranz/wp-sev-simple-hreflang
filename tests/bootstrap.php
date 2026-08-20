@@ -189,6 +189,25 @@ function get_bloginfo( string $show = '' ): string {
 	return Fixtures::$bloginfo[ $show ] ?? '';
 }
 
+function esc_html( string $text ): string {
+	return htmlspecialchars( $text, ENT_QUOTES );
+}
+
+function register_block_type( string $path, array $args = array() ): bool {
+	Fixtures::$registeredBlockTypes[ $path ] = $args;
+	return true;
+}
+
+function get_block_wrapper_attributes( array $extra_attributes = array() ): string {
+	$attributes = array();
+
+	foreach ( $extra_attributes as $name => $value ) {
+		$attributes[] = sprintf( '%s="%s"', $name, esc_attr( (string) $value ) );
+	}
+
+	return implode( ' ', $attributes );
+}
+
 // ---------------------------------------------------------------------------
 // Configurable fixture store, reset before each test
 // ---------------------------------------------------------------------------
@@ -200,6 +219,8 @@ class Fixtures {
 	public static array $registeredScripts = array();
 	/** @var string[] wp_enqueue_script() call log. */
 	public static array $enqueuedScripts = array();
+	/** @var array<string, array<string, mixed>> register_block_type() call log, keyed by block path. */
+	public static array $registeredBlockTypes = array();
 	public static ?object $currentScreen = null;
 
 	public static bool $nonceIsValid = true;
@@ -230,6 +251,7 @@ class Fixtures {
 		self::$registeredPostMeta = array();
 		self::$registeredScripts = array();
 		self::$enqueuedScripts = array();
+		self::$registeredBlockTypes = array();
 		self::$currentScreen = null;
 		self::$nonceIsValid = true;
 		self::$currentUserCapabilities = array();
@@ -255,3 +277,4 @@ class Fixtures {
 // ---------------------------------------------------------------------------
 
 require_once dirname( __DIR__ ) . '/includes/hreflang.php';
+require_once dirname( __DIR__ ) . '/includes/navigation-block.php';

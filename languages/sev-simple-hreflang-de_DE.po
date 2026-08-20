@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SEV Simple hreflang 1.0.0\n"
+"Project-Id-Version: SEV Simple hreflang 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sev-simple-hreflang\n"
 "Last-Translator: sevmatic\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-17T12:25:18+00:00\n"
-"PO-Revision-Date: 2026-08-17T12:25:18+00:00\n"
+"POT-Creation-Date: 2026-08-20T16:04:20+00:00\n"
+"PO-Revision-Date: 2026-08-20T16:04:20+00:00\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: sev-simple-hreflang\n"
@@ -17,11 +17,6 @@ msgstr ""
 #: sev-simple-hreflang.php
 msgid "SEV Simple hreflang"
 msgstr "SEV Simple hreflang"
-
-#. Description of the plugin
-#: sev-simple-hreflang.php
-msgid "Adds hreflang alternates for pages, posts, and categories and outputs them as <link rel=\"alternate\"> in <head>, including a self-referencing link."
-msgstr "Fügt hreflang-Alternates für Seiten, Beiträge und Kategorien hinzu und gibt sie als <link rel=\"alternate\"> im <head> aus, inklusive Self-Referencing-Link."
 
 #. Author of the plugin
 #: sev-simple-hreflang.php
@@ -52,3 +47,74 @@ msgstr "Wird als <link rel=\"alternate\" hreflang=\"…\"> im <head> dieser Kate
 #: public/js/hreflang-sidebar.js:49
 msgid "hreflang (alternate language versions)"
 msgstr "hreflang (alternative Sprachversionen)"
+
+#. Description of the plugin
+#: sev-simple-hreflang.php
+msgid "Adds hreflang alternates for pages, posts, and categories, outputs them as <link rel=\"alternate\"> in <head> including a self-referencing link, and offers a Language Link block for the Navigation block."
+msgstr "Fügt hreflang-Alternates für Seiten, Beiträge und Kategorien hinzu, gibt sie als <link rel=\"alternate\"> im <head> aus (inklusive Self-Referencing-Link) und bietet einen Language-Link-Block für den Navigation-Block."
+
+#: blocks/language-link/index.js:38
+msgid "Language link"
+msgstr "Sprachlink"
+
+#: blocks/language-link/index.js:57
+msgid "hreflang settings"
+msgstr "hreflang-Einstellungen"
+
+#: blocks/language-link/index.js:59
+msgid "Target hreflang code"
+msgstr "Ziel-hreflang-Code"
+
+#: blocks/language-link/index.js:61
+msgid "This item only appears on pages that have a matching hreflang alternate."
+msgstr "Dieser Eintrag erscheint nur auf Seiten, die eine passende hreflang-Alternative hinterlegt haben."
+
+#: blocks/language-link/index.js:68
+msgid "Label"
+msgstr "Beschriftung"
+
+#: blocks/language-link/index.js:69
+msgid "e.g. English"
+msgstr "z. B. Englisch"
+
+#: public/js/hreflang-sidebar.js:60
+msgid "hreflang"
+msgstr "hreflang"
+
+#: public/js/hreflang-sidebar.js:72
+msgid "URL"
+msgstr "URL"
+
+#: public/js/hreflang-sidebar.js:93
+msgid "Remove row"
+msgstr "Zeile entfernen"
+
+#: blocks/language-link/block.json
+msgctxt "block title"
+msgid "hreflang Language Link"
+msgstr "hreflang-Sprachlink"
+
+#: blocks/language-link/block.json
+msgctxt "block description"
+msgid "Adds a navigation menu item linking to the current page's hreflang alternate for a specific language. The item is left out automatically when the current page has no matching alternate."
+msgstr "Fügt einen Navigationseintrag hinzu, der zur hreflang-Alternative der aktuellen Seite für eine bestimmte Sprache verlinkt. Der Eintrag entfällt automatisch, wenn für die aktuelle Seite keine passende Alternative hinterlegt ist."
+
+#: blocks/language-link/index.js:76
+msgid "Icon (optional)"
+msgstr "Icon (optional)"
+
+#: blocks/language-link/index.js:77
+msgid "e.g. 🇬🇧"
+msgstr "z. B. 🇬🇧"
+
+#: blocks/language-link/index.js:78
+msgid "Any short text or emoji, shown before the label."
+msgstr "Ein kurzer Text oder Emoji, der vor der Beschriftung angezeigt wird."
+
+#: blocks/language-link/index.js:85
+msgid "Tooltip (optional)"
+msgstr "Tooltip (optional)"
+
+#: blocks/language-link/index.js:86
+msgid "e.g. Go to the English version of this page."
+msgstr "z. B. Hier geht es zur englischen Version dieser Seite."
