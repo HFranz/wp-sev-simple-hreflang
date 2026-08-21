@@ -4,7 +4,7 @@ Tags: hreflang, seo, multilingual, alternate, navigation
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,11 @@ Yes. The plugin can be network-activated or activated per site; each site manage
 1. Sidebar panel in the block editor
 
 == Changelog ==
+
+= 1.2.0 =
+* Fix broken readme short description caused by literal `<head>` markup being stripped by wp.org.
+* Exclude translated .po/.mo/.json language files from the packaged ZIP; only the .pot source ships, translations are hosted on translate.wordpress.org.
+* Bump the Language Link block to apiVersion 3 for iframe block editor compatibility (WordPress 6.3+).
 
 = 1.1.0 =
 * Add "hreflang Language Link" block for the Navigation block (block themes), linking to the current page's alternate for a chosen language and omitted when no matching alternate exists.
