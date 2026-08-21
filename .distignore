@@ -11,3 +11,8 @@ vendor
 composer.json
 composer.lock
 phpunit.xml.dist
+.phpunit.result.cache
+languages/*.po
+languages/*.mo
+languages/*.json
+languages/*.l10n.php
